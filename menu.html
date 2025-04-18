@@ -1,0 +1,19 @@
+<!-- Hamburger Menu (include this in every page) -->
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<nav id="sideMenu">
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="kalender.html">Kalender</a></li>
+        <li><a href="leden.html">Leden</a></li>
+        <li><a href="geschiedenis.html">Geschiedenis</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+
+<script>
+function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    menu.classList.toggle('open');
+}
+</script>
