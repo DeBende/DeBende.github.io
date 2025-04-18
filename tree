@@ -1,0 +1,9 @@
+tree
+
+/my-website
+  ├── home.html
+  ├── kalender.html
+  ├── leden.html
+  ├── geschiedenis.html
+  ├── style.css
+  └── /images (put your thumbnails here)
