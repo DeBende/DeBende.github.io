@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Toneelkring De Bende vzw</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- Hamburger menu -->
+	<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+	<nav id="sideMenu">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="leden.html">Leden</a></li>
+			<li><a href="geschiedenis.html">Geschiedenis</a></li>
+			<li><a href="kalender.html">Kalender</a></li>
+		</ul>
+	</nav>
+	<h1>Welkom op de website van Toneelkring De Bende vzw</h1>
+	<!--> logo <-->
+	
+	<script>
+		function toggleMenu() {
+			const menu = document.getElementById('sideMenu');
+			menu.classList.toggle('open');
+		}
+	</script>
+</body>
+</html>
