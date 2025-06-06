@@ -20,6 +20,7 @@
   <main>
     <h1>Welkom bij De Bende</h1>
     <p>We zijn een toneelkring met passie voor theater.</p>
+    <p>Aantal bezoeken: <span id="page-views">...</span></p>
   </main>
 
   <script>
@@ -34,6 +35,13 @@
         menu.classList.remove('open');
       }
     });
+
+    // CountAPI: Page view counter
+    fetch('https://api.countapi.xyz/hit/debende.github.io/index')
+      .then(res => res.json())
+      .then(res => {
+        document.getElementById('page-views').innerText = res.value;
+      });
   </script>
 </body>
 </html>
