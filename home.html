@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Home | De Bende</title>
     <meta name="description" content="Welkom bij Toneelkring De Bende. Bekijk onze leden, geschiedenis en kalender.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+    <!-- Hamburger Menu Button -->
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
     <main>
         <h1>Welkom bij De Bende</h1>
         <p>We zijn een toneelkring met passie voor theater.</p>
+
+        <!-- Visitor Counter -->
+        <p>Deze pagina is <strong><span id="counter">...</span></strong> keer bezocht.</p>
     </main>
 
+    <!-- Scripts -->
     <script>
         function toggleMenu() {
             const menu = document.getElementById('sideMenu');
             menu.classList.toggle('open');
         }
 
+        // Load menu.html dynamically
         fetch('menu.html')
             .then(response => response.text())
             .then(data => {
@@ -29,6 +35,14 @@
                 wrapper.innerHTML = data;
                 document.body.insertBefore(wrapper, document.body.firstChild);
             });
+
+        // Visitor counter using CountAPI
+        fetch('https://api.countapi.xyz/hit/debende.github.io/home')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('counter').innerText = data.value;
+            });
     </script>
+
 </body>
 </html>
