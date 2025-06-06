@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Toneelkring De Bende vzw</title>
-	<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | De Bende</title>
+    <meta name="description" content="Welkom bij Toneelkring De Bende. Bekijk onze leden, geschiedenis en kalender.">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<!-- Hamburger menu -->
-	<button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-	<nav id="sideMenu">
-		<ul>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="leden.html">Leden</a></li>
-			<li><a href="geschiedenis.html">Geschiedenis</a></li>
-			<li><a href="kalender.html">Kalender</a></li>
-		</ul>
-	</nav>
-	<h1>Welkom op de website van Toneelkring De Bende vzw</h1>
-	<!--> logo <-->
-	
-	<script>
-		function toggleMenu() {
-			const menu = document.getElementById('sideMenu');
-			menu.classList.toggle('open');
-		}
-	</script>
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <main>
+        <h1>Welkom bij De Bende</h1>
+        <p>We zijn een toneelkring met passie voor theater.</p>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('sideMenu');
+            menu.classList.toggle('open');
+        }
+
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = data;
+                document.body.insertBefore(wrapper, document.body.firstChild);
+            });
+    </script>
 </body>
 </html>

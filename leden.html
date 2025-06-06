@@ -3,22 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leden</title>
+    <title>Leden | De Bende</title>
+    <meta name="description" content="Ontmoet de leden van toneelkring De Bende.">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Hamburger menu -->
     <button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-    <nav id="sideMenu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="leden.html">Leden</a></li>
-            <li><a href="geschiedenis.html">Geschiedenis</a></li>
-            <li><a href="kalender.html">Kalender</a></li>
-        </ul>
-    </nav>
 
     <main>
         <h1>Onze Leden</h1>
@@ -27,7 +18,6 @@
             <img src="images/lid2.jpg" alt="Lid 2">
             <img src="images/lid3.jpg" alt="Lid 3">
             <img src="images/lid4.jpg" alt="Lid 4">
-            <!-- Add more as needed -->
         </div>
     </main>
 
@@ -36,6 +26,14 @@
             const menu = document.getElementById('sideMenu');
             menu.classList.toggle('open');
         }
+
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(data => {
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = data;
+                document.body.insertBefore(wrapper, document.body.firstChild);
+            });
     </script>
 </body>
 </html>
