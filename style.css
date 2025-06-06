@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    line-height: 1.5;
 }
 
 nav {
@@ -38,19 +39,21 @@ nav ul li a {
 
 .menu-btn {
     position: fixed;
-    top: 15px;
-    left: 15px;
-    background-color: #333;
-    color: white;
-    border: none;
-    font-size: 24px;
-    z-index: 1001;
-    cursor: pointer;
+    position: fixed;
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  z-index: 999;
+  cursor: pointer;
 }
 
 main {
     margin-left: 20px;
-    padding: 80px 20px 20px 220px;
+    padding: 1rem;
+     max-width: 1000px;
+  margin: auto;
 }
 
 .gallery {
@@ -64,4 +67,51 @@ main {
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
+}
+
+.calendar-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%; /* adjust this for height ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.calendar-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+#sideMenu {
+  display: none;
+}
+
+#sideMenu.open {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  width: 200px;
+  height: 100%;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  z-index: 998;
+}
+
+@media (min-width: 768px) {
+  #sideMenu {
+    display: block !important; /* force visible on desktop */
+    position: static;
+    box-shadow: none;
+    width: auto;
+    height: auto;
+  }
+
+  .menu-btn {
+    display: none;
+  }
 }
