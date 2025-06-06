@@ -1,48 +1,39 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Home | De Bende</title>
-    <meta name="description" content="Welkom bij Toneelkring De Bende. Bekijk onze leden, geschiedenis en kalender.">
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home | De Bende</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- Hamburger Menu Button -->
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <nav id="sideMenu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="leden.html">Leden</a></li>
+      <li><a href="geschiedenis.html">Geschiedenis</a></li>
+      <li><a href="kalender.html">Kalender</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h1>Welkom bij De Bende</h1>
+    <p>We zijn een toneelkring met passie voor theater.</p>
+  </main>
 
-    <main>
-        <h1>Welkom bij De Bende</h1>
-        <p>We zijn een toneelkring met passie voor theater.</p>
-
-        <!-- Visitor Counter -->
-        <p>Deze pagina is <strong><span id="counter">...</span></strong> keer bezocht.</p>
-    </main>
-
-    <!-- Scripts -->
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('sideMenu');
-            menu.classList.toggle('open');
-        }
-
-        // Load menu.html dynamically
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(data => {
-                const wrapper = document.createElement('div');
-                wrapper.innerHTML = data;
-                document.body.insertBefore(wrapper, document.body.firstChild);
-            });
-
-        // Visitor counter using CountAPI
-        fetch('https://api.countapi.xyz/hit/debende.github.io/home')
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('counter').innerText = data.value;
-            });
-    </script>
-
+  <script>
+    function toggleMenu() {
+      document.getElementById('sideMenu').classList.toggle('open');
+    }
+    // Optional: close menu when clicking outside of it
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('sideMenu');
+      const btn = document.querySelector('.menu-btn');
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
 </body>
 </html>
