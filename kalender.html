@@ -9,11 +9,16 @@
 <body>
 
 	<button class="menu-btn" onclick="toggleMenu()">☰</button>
-
+	
 	<main>
 		<h1>Kalender</h1>
 		<p>Bekijk hier onze aankomende activiteiten.</p>
 
+		<div id="events-list">
+		  <h2>Volgende activiteiten</h2>
+		  <ul id="next-events"></ul>
+		</div>
+			
 		<!-- Google Calendar Embed -->
 		<div class="calendar-wrapper">
 			<iframe src="https://calendar.google.com/calendar/embed?src=tk.debende.vzw%40gmail.com&ctz=Europe%2FBrussels" 
@@ -38,6 +43,32 @@
 				wrapper.innerHTML = data;
 				document.body.insertBefore(wrapper, document.body.firstChild);
 			});
+	</script>
+	<script>
+		const CALENDAR_ID = "tk.debende.vzw@gmail.com"; // <-- Use plain email, not encoded
+		const API_KEY = "AIzaSyAeyz2luNUtVOGJS3FqoRXBQ2jf9_IIs5Y";
+		const now = new Date().toISOString();
+		const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&orderBy=startTime&singleEvents=true&timeMin=${now}&maxResults=5`;
+		
+		fetch(url)
+		  .then(res => res.json())
+		  .then(data => {
+		    const events = data.items || [];
+		    const ul = document.getElementById("next-events");
+		    if (events.length === 0) {
+		      ul.innerHTML = "<li>Geen geplande activiteiten.</li>";
+		    } else {
+		      ul.innerHTML = events.map(ev => {
+			const start = ev.start.dateTime || ev.start.date; // all-day or timed
+			const date = new Date(start);
+			const dateStr = date.toLocaleDateString("nl-NL", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+			return `<li><strong>${ev.summary}</strong><br>${dateStr}</li>`;
+		      }).join('');
+		    }
+		  })
+		  .catch(() => {
+		    document.getElementById("next-events").innerHTML = "<li>Kan activiteiten niet laden.</li>";
+		  });
 	</script>
 
 </body>
