@@ -5,57 +5,76 @@ body {
     line-height: 1.5;
 }
 
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #333;
-    color: white;
-    padding-top: 60px;
-    width: 200px;
-    height: 100%;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  color: white;
+  padding-top: 60px;
+  width: 200px;
+  height: 100%;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
 }
 
-nav.open {
-    transform: translateX(0);
+#sideMenu.open {
+  transform: translateX(0);
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+#sideMenu ul {
+  list-style: none;
+  padding: 0;
 }
 
-nav ul li {
-    padding: 15px;
+#sideMenu ul li {
+  padding: 15px;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
+#sideMenu ul li a {
+  color: white;
+  text-decoration: none;
 }
 
 .menu-btn {
-    position: fixed;
-    position: fixed;
+  position: fixed;
   top: 1rem;
   left: 1rem;
   font-size: 2rem;
   background: none;
   border: none;
-  z-index: 999;
+  z-index: 1001; /* above menu */
   cursor: pointer;
+  color: #333;
 }
 
 main {
-    margin-left: 20px;
-    padding: 1rem;
-     max-width: 1000px;
+  padding: 1rem;
+  max-width: 1000px;
   margin: auto;
 }
 
+/* Responsive menu: show sideMenu as static on desktop, hide burger */
+@media (min-width: 768px) {
+  #sideMenu {
+    transform: none !important;
+    position: static;
+    width: 200px;
+    height: 100vh;
+    z-index: 1000;
+  }
+
+  .menu-btn {
+    display: none;
+  }
+
+  main {
+    margin-left: 200px;
+  }
+}
+
+/* GALLERY AND CALENDAR STYLES (unchanged) */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -72,7 +91,7 @@ main {
 .calendar-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 75%; /* adjust this for height ratio */
+  padding-bottom: 75%;
   height: 0;
   overflow: hidden;
 }
@@ -83,35 +102,4 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-
-#sideMenu {
-  display: none;
-}
-
-#sideMenu.open {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: white;
-  width: 200px;
-  height: 100%;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-  z-index: 998;
-}
-
-@media (min-width: 768px) {
-  #sideMenu {
-    display: block !important; /* force visible on desktop */
-    position: static;
-    box-shadow: none;
-    width: auto;
-    height: auto;
-  }
-
-  .menu-btn {
-    display: none;
-  }
 }
