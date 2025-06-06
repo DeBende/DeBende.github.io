@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Kalender | De Bende</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+	<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+	<main>
+		<h1>Kalender</h1>
+		<p>Bekijk hier onze aankomende activiteiten.</p>
+
+		<!-- Google Calendar Embed -->
+		<iframe src="https://calendar.google.com/calendar/embed?src=tk.debende.vzw%40gmail.com&ctz=Europe%2FBrussels" 
+			style="border: 0" 
+			width="800" 
+			height="600" 
+			frameborder="0" 
+			scrolling="no">
+		</iframe>
+	</main>
+
+	<script>
+		function toggleMenu() {
+			const menu = document.getElementById('sideMenu');
+			menu.classList.toggle('open');
+		}
+
+		fetch('menu.html')
+			.then(response => response.text())
+			.then(data => {
+				const wrapper = document.createElement('div');
+				wrapper.innerHTML = data;
+				document.body.insertBefore(wrapper, document.body.firstChild);
+			});
+	</script>
+
+</body>
+</html>
