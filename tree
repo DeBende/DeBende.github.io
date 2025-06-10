@@ -1,9 +1,10 @@
 tree
 
 /my-website
-  ├── home.html
-  ├── kalender.html
+  ├── index.html
   ├── leden.html
+  ├── contact.html
+  ├── kalender.html
   ├── geschiedenis.html
   ├── style.css
   └── /images (put your thumbnails here)
