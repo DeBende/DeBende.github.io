@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Kalender | De Bende</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+	<button class="menu-btn" onclick="toggleMenu()">☰</button>
+	
+	<main>
+		<h1>Contact</h1>
+	  <section class="contact-info">
+            <h2>Contactgegevens</h2>
+            <p>Telefoon: <a href="tel:0472295078">0472 29 50 78</a></p>
+            <p>E-mail: <a href="mailto:tk.debende.vzw@gmail.com">tk.debende.vzw@gmail.com</a></p>
+        </section>
+
+		<section class="facebook-link">
+			<h2>Volg ons op Facebook</h2>
+			<a href="https://www.facebook.com/tkdebende" target="_blank" rel="noopener">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo" style="height:24px;vertical-align:middle;margin-right:8px;">
+				Bezoek onze publieke Facebookpagina
+			</a>
+		</section>
+
+		<section class="webshop-link">
+			<h2>Webwinkel</h2>
+			<p>
+				Ontdek onze producten in de <a href="https://de-bende.sumupstore.com/producten" target="_blank" rel="noopener">webwinkel</a>.
+			</p>
+		</section>
+
+		<section class="parosecundo-link">
+			<h2>Parosecundo</h2>
+			<p>
+				Meer info over Parosecundo vind je op de 
+				<a href="https://sites.google.com/parosecundo.be/parosecundo-vzw/home" target="_blank" rel="noopener">website van Parosecundo</a>.
+			</p>
+		</section>
+	</main>
+
+	<script>
+		function toggleMenu() {
+			const menu = document.getElementById('sideMenu');
+			menu.classList.toggle('open');
+		}
+
+		fetch('menu.html')
+			.then(response => response.text())
+			.then(data => {
+				const wrapper = document.createElement('div');
+				wrapper.innerHTML = data;
+				document.body.insertBefore(wrapper, document.body.firstChild);
+			});
+	</script>
+
+</body>
+</html>
